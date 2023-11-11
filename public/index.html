@@ -2,13 +2,84 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Téléchargement d'Image</title>
+  <title>Administration des Images</title>
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      fetch('/admin/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          showSuccessMessage();
+          updateImageDisplay();
+        } else {
+          throw new Error('Échec du téléchargement de l\'image');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+    }
+
+    function showSuccessMessage() {
+      const messageContainer = document.getElementById('successMessage');
+      messageContainer.textContent = 'Image remplacée avec succès!';
+      setTimeout(() => messageContainer.textContent = '', 3000); // Efface le message après 3 secondes
+    }
+
+    function updateImageDisplay() {
+      // Mettez à jour l'affichage de l'image ici, par exemple en rechargeant l'élément img
+      const imageDisplay = document.getElementById('imageDisplay');
+      imageDisplay.src = '/images/magic.jpg?' + new Date().getTime(); // Ajoutez un timestamp pour forcer le rechargement
+    }
+	
+	function sendEmail(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      
+      fetch('/send-magic-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Email envoyé avec succès!');
+        } else {
+          throw new Error('Échec de l\'envoi de l\'email');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+    }
+  </script>
 </head>
 <body>
-  <h1>Téléchargez votre image pour le tour de magie</h1>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*">
-    <button type="submit">Télécharger</button>
+  <h1>Administration des Images pour le Tour de Magie</h1>
+  
+  <h2>Envoyer l'Email Magique</h2>
+  <form onsubmit="sendEmail(event)">
+    <input type="email" id="email" placeholder="Email du destinataire" required>
+    <button type="submit">Envoyer l'Email</button>
+  </form>
+  
+  </br>
+  
+
+  <div id="successMessage"></div>
+  <div>
+    <h2>Image Actuelle:</h2>
+    <img id="imageDisplay" src="/images/magic.jpg" alt="Image Actuelle" />
+  </div>
+    <form onsubmit="submitForm(event)">
+    <input type="file" name="newImage" accept="image/*">
+    <button type="submit">Remplacer l'Image</button>
   </form>
 </body>
 </html>
