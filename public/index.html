@@ -2,8 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Administration des Images</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About A Magic Trick</title>
   <script>
+  
+  
     function submitForm(event) {
       event.preventDefault();
       const formData = new FormData(event.target);
@@ -59,27 +62,37 @@
       });
     }
   </script>
+ <link rel="styleSheet" href="style.css" />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+<link rel="manifest" href="icon/site.webmanifest">
 </head>
 <body>
-  <h1>Administration des Images pour le Tour de Magie</h1>
-  
+<div class="container">
+  <h1>Galerie Enchantée</h1>
+  <hr>
   <h2>Envoyer l'Email Magique</h2>
   <form onsubmit="sendEmail(event)">
     <input type="email" id="email" placeholder="Email du destinataire" required>
     <button type="submit">Envoyer l'Email</button>
   </form>
-  
+ 
   </br>
-  
-
+  <hr>
   <div id="successMessage"></div>
   <div>
     <h2>Image Actuelle:</h2>
     <img id="imageDisplay" src="/images/magic.jpg" alt="Image Actuelle" />
   </div>
     <form onsubmit="submitForm(event)">
-    <input type="file" name="newImage" accept="image/*">
+    <input type="file" id="file-upload" name="newImage" accept="image/*" hidden>
+	<label for="file-upload" class="file-upload-label">Choisir une image</label>
     <button type="submit">Remplacer l'Image</button>
   </form>
+  </div>
 </body>
 </html>

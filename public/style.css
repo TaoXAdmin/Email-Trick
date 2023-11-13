@@ -1,0 +1,170 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Yusei Magic', sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+}
+  /* Styles for image to make it stand out with a border and shadow */
+  img {
+    width: calc(100% - 4px); /* Full width minus the border */
+    margin: 2px auto; /* Center image with a bit of margin */
+    height: auto; /* Maintain aspect ratio */
+    border: 2px solid black; /* Black border for definition */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* Shadow for 3D effect */
+  }
+  
+.container {
+  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px; /* Padding for content */
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Headings */
+h1 {
+ 
+  color: #000; /* Soft color that stands out */
+  text-shadow: 1px 1px 2px #dcd0c0; /* Slight shadow for depth */
+  font-size: 48px; /* Adjust size as needed */
+  font-weight: normal; /* Avoid bold to keep it clean */
+  text-align: center; /* Center the title */
+  margin: 20px 40px 20px 0; /* Space above, right, below, and no space on the left */
+  padding: 10px 40px 10px 40px; /* Padding inside the h1 box at top, right, bottom, and no padding on the left */
+  background-color: rgba(255, 255, 255, 0.8); /* Subtle background for legibility */
+  border-radius: 10px; /* Soft rounded corners */
+  width: max-content; /* Only as wide as it needs to be */
+  margin-left: auto; /* Center the title block horizontally */
+  margin-right: auto; /* Center the title block horizontally */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow for depth */
+}
+
+
+h2 {
+  color: #000;
+  text-align: center; /* Center headings */
+}
+
+/* Button styles */
+button {
+  background-color: #007aff;
+  font-family: 'Yusei Magic', sans-serif;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px 0; /* Space around buttons */
+}
+input::placeholder {
+  font-family: 'Yusei Magic', sans-serif;
+  /* You can also style the color, font size, etc. */
+}
+
+.file-upload-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d0d0d0;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Yusei Magic', sans-serif;
+  /* Additional styling to make it look like a button */
+}
+
+/* Visually hide the actual file input but it will be focusable */
+#file-upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Style focus state for accessibility */
+#file-upload + .file-upload-label:focus {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Form spacing */
+form {
+  margin-bottom: 20px;
+}
+
+/* Input email specific styles */
+input[type="email"] {
+  width: calc(100% - 40px); /* Full width minus padding */
+  max-width: 500px; /* Maximum width */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Input file specific styles */
+input[type="file"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* iPhone 12 Pro and other mobile devices */
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 10px; /* Reduced padding for mobile devices */
+  }
+ h1 {
+    font-size: 24px; /* Larger font size for headers */
+  }
+  /* Increase font size for readability on small screens */
+ h2 {
+    font-size: 18px; /* Larger font size for headers */
+  }
+
+  /* Larger buttons for better readability and easier interaction */
+  button {
+    font-size: 18px;
+  }
+  
+  input[type="email"] {
+  min-width: 200px; /* Maximum width */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+  /* Larger form inputs for easier interaction */
+ input[type="file"] {
+    padding: 12px;
+    font-size: 16px;
+    width: calc(100% - 4px); /* Full width minus the border */
+  }
+}

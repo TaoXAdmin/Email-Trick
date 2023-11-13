@@ -63,7 +63,7 @@ app.post('/admin/upload', adminUpload.single('newImage'), (req, res) => {
 
   // Redimensionner l'image
   sharp(newImagePath)
-    .resize(600) // Redimensionne la largeur à 800px et ajuste la hauteur automatiquement
+    .resize(800) // Redimensionne la largeur à 800px et ajuste la hauteur automatiquement
     .toFile(targetPath, (err) => {
       if (err) {
         console.error('Erreur lors du redimensionnement de l\'image:', err);
@@ -88,9 +88,9 @@ app.post('/send-magic-email', (req, res) => {
 
   let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
   sendSmtpEmail.subject = "Your Magic Image";
-  sendSmtpEmail.htmlContent = `<html><body><p>Check out your magic image here:</p><img src="${imageUrl}" alt="Magic Image"></body></html>`;
-  sendSmtpEmail.sender = {"name": "Magicien", "email":"aboutamagictrick@gmail.com"};
-  sendSmtpEmail.to = [{"email": email}];
+  sendSmtpEmail.htmlContent = `<html><body><p>Check out your magic image de amor here:</p><img src="${imageUrl}" alt="Magic Image"></body></html>`;
+  sendSmtpEmail.sender = {"name": "Jessica", "email":"aboutamagictrick@gmail.com"};
+  sendSmtpEmail.to = [{"email": email}];	
 
   apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
     console.log('API called successfully. Returned data: ' + JSON.stringify(data));
